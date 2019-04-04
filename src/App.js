@@ -11,13 +11,12 @@ class App extends Component {
     showPersons: false
   }
 
-  switchNameHandler = (newName) => {
-    this.setState({
-      persons: [
-        {name: newName, age: 26},
-        {name: 'Kelly', age: 25}
-      ],
-    })
+  deletePersonHandlers = (personIndex) => {
+    //Es una buena practica al mutar la lista hacer una copia,
+    //modificar la copia y la copia pasarlo al metodo setState
+    const persons = [...this.state.persons]
+    persons.splice(personIndex,1);
+    this.setState({persons:persons})
   }
 
   tooglePersonsHandlers = () => {
@@ -51,7 +50,7 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person,index) => {
-            return <Person name={person.name} years={person.age} key={index}/>
+            return <Person click={() => this.deletePersonHandlers(index)} name={person.name} years={person.age} key={index}/>
           })}
         </div>
       )
