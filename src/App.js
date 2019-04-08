@@ -44,17 +44,8 @@ class App extends Component {
     })    
   }
   render() {
-    const style = {
-      backgroundColor: 'blue',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      borderRadius: '8px',
-      color: '#eee',
-      cursor: 'pointer'
-    };
-
     let persons = null;
+    let btnClass = '';
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -68,8 +59,7 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red';
-      style.border= '1px solid red';
+      btnClass = styles.Red
     }
 
     let classes = []
@@ -86,7 +76,7 @@ class App extends Component {
         <h1>
           Hi, I'am React App
         </h1>
-        <button style={style} onClick={this.tooglePersonsHandlers}>Toogle Persons</button>
+        <button className={btnClass} onClick={this.tooglePersonsHandlers}>Toogle Persons</button>
         <p className={classes}>This is really working</p>
         {persons}
       </div>
