@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium'
+import Radium, { StyleRoot } from 'radium'
 import Person from './Person/Person';
 
 class App extends Component {
@@ -91,6 +91,7 @@ class App extends Component {
     classes = classes.join(' ')
 
     return (
+      <StyleRoot>
       <div className="App">
         <h1>
           Hi, I'am React App
@@ -99,6 +100,7 @@ class App extends Component {
         <p className={classes}>This is really working</p>
         {persons}
       </div>
+      </StyleRoot>
       );
       //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I am react app'))
   }
