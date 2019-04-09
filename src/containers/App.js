@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './App.css';
-import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -45,39 +46,25 @@ class App extends Component {
   }
   render() {
     let persons = null;
-    let btnClass = '';
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person,index) => {
-            return <Person 
-            click={() => this.deletePersonHandlers(index)} 
-            name={person.name} 
-            years={person.age} 
-            key={index}
-            changed={(event) => this.nameChangedHandler(event, person.id)}/>
-          })}
+          <Persons 
+          persons={this.state.persons}
+          clicked={this.deletePersonHandlers}
+          changed={this.nameChangedHandler}/>
         </div>
       );
-      btnClass = styles.Red
     }
 
-    let classes = []
-    if (this.state.persons.length <= 2) {
-      classes.push(styles.red)
-    }
-    if (this.state.persons.length <= 1) {
-      classes.push(styles.bold)
-    }
-    classes = classes.join(' ')
+
 
     return (
       <div className={styles.App}>
-        <h1>
-          Hi, I'am React App
-        </h1>
-        <button className={btnClass} onClick={this.tooglePersonsHandlers}>Toogle Persons</button>
-        <p className={classes}>This is really working</p>
+      <Cockpit 
+        showPersons={this.state.showPersons}
+        persons= {this.state.persons}
+        clicked= {this.tooglePersonsHandlers}/>
         {persons}
       </div>
       );
