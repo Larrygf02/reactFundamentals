@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './cockpit.css'
+import styles from './Cockpit.css'
 
 const cockpit = (props) => {
     let classes = []
