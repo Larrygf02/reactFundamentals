@@ -5,7 +5,7 @@ const cockpit = (props) => {
     let classes = []
     let btnClass = ''
     if (props.showPersons) {
-      btnClass = styles.red
+      btnClass = styles.Red
     }
     if (props.persons.length <= 2) {
       classes.push(styles.red)
@@ -15,9 +15,9 @@ const cockpit = (props) => {
     }
     classes = classes.join(' ')
     return(
-        <div className={styles.cockpit}>
+        <div className={styles.Cockpit}>
             <h1>
-                Hi, I'am React App
+                {props.title}
             </h1>
             <button className={btnClass} onClick={props.clicked}>Toogle Persons</button>
             <p className={classes}>This is really working</p>
