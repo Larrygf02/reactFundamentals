@@ -4,12 +4,30 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+  }
   state = {
     persons: [
       {id: 'fd23', name: 'Raul', age: 26},
       {id: 'ad34', name: 'Kelly', age: 25}
     ],
     showPersons: false
+  }
+
+  //Lyfecicle
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  componentWillMount() {
+    console.log('[App.js] ComponentWillMount');
+  }
+
+  componentDidMount() {
+    console.log('[App.js] ComponentDidMount');
   }
 
   deletePersonHandlers = (personIndex) => {
@@ -45,6 +63,7 @@ class App extends Component {
     })    
   }
   render() {
+    console.log('[App.js] render');
     let persons = null;
     if (this.state.showPersons) {
       persons = (
