@@ -30,6 +30,18 @@ class App extends Component {
     console.log('[App.js] ComponentDidMount');
   }
 
+  //ShouldComponentUpdate debe retornar un valor
+  //false-> no update state
+  //true -> update state
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] ShouldComponentUpdate');
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log('[App.js] ComponentDidUpdate');
+  }
+
   deletePersonHandlers = (personIndex) => {
     //Es una buena practica al mutar la lista hacer una copia,
     //modificar la copia y la copia pasarlo al metodo setState
