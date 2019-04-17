@@ -10,7 +10,17 @@ const cockpit = (props) => {
       setTimeout(() => {
         alert('Save data cloud')
       }, 1000)
-    }, [props.persons]);
+      return () => {
+        console.log('[Cockpit.js] cleanup works');
+      }
+    }, []);
+
+    useEffect(() => {
+      console.log('[Cockpit.js] 2nd useEffect');
+      return () => {
+        console.log('[Cockpit.js] cleanup works 2nd');
+      }
+    })
     let classes = []
     let btnClass = ''
     if (props.showPersons) {
