@@ -17,7 +17,8 @@ class App extends Component {
     ],
     showPersons: false,
     showCockpit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false
   }
 
   //Lyfecicle
@@ -80,6 +81,10 @@ class App extends Component {
       };
     })    
   }
+
+  loginHandler = () => {
+    this.setState({authenticated: true})
+  };
   render() {
     console.log('[App.js] render');
     let persons = null;
@@ -89,7 +94,8 @@ class App extends Component {
           <Persons 
           persons={this.state.persons}
           clicked={this.deletePersonHandlers}
-          changed={this.nameChangedHandler}/>
+          changed={this.nameChangedHandler}
+          isAuthenticated={this.state.authenticated}/>
         </div>
       );
     }
@@ -103,7 +109,8 @@ class App extends Component {
         title={this.props.appTitle}
         showPersons={this.state.showPersons}
         personsLength= {this.state.persons.length}
-        clicked= {this.tooglePersonsHandlers}/> : null}
+        clicked= {this.tooglePersonsHandlers}
+        login={this.loginHandler}/> : null}
         {persons}
       </Aux>
       );
