@@ -17,6 +17,7 @@ class App extends Component {
     ],
     showPersons: false,
     showCockpit: true,
+    changeCounter: 0
   }
 
   //Lyfecicle
@@ -73,8 +74,10 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({
-      persons //persons:persons
+    this.setState((prevState, props) =>{
+      return {
+        persons,changeCounter: prevState.changeCounter + 1 //persons:persons
+      };
     })    
   }
   render() {
